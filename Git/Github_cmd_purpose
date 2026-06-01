@@ -1,0 +1,165 @@
+## Git Commands — Full Reference
+
+### 🔧 Setup & Config
+| Command | Purpose |
+|---|---|
+| `git --version` | Check Git is installed |
+| `git config --global user.name "Your Name"` | Set your name (shows in commits) |
+| `git config --global user.email "you@email.com"` | Set your email |
+| `git config --list` | View all your config settings |
+
+---
+
+### 📁 Starting a Project
+| Command | Purpose |
+|---|---|
+| `git init` | Turn any folder into a Git repo |
+| `git clone <url>` | Download a repo from GitHub to your machine |
+| `git clone <url> myfolder` | Clone into a specific folder name |
+
+---
+
+### 👀 Checking Status
+| Command | Purpose |
+|---|---|
+| `git status` | See what's changed / staged / untracked |
+| `git diff` | See exact line changes (not yet staged) |
+| `git diff --staged` | See changes already staged (ready to commit) |
+| `git log` | Full commit history |
+| `git log --oneline` | Short one-line history (cleaner) |
+| `git log --oneline --graph` | Visual branch tree |
+| `git show <commit-id>` | See what changed in a specific commit |
+
+---
+
+### ➕ Staging & Committing
+| Command | Purpose |
+|---|---|
+| `git add filename.py` | Stage one specific file |
+| `git add .` | Stage ALL changed files |
+| `git add -p` | Stage changes piece by piece (interactive) |
+| `git commit -m "Your message"` | Save a snapshot with a message |
+| `git commit -am "message"` | Stage + commit tracked files in one step |
+| `git commit --amend -m "new msg"` | Fix the last commit message |
+
+---
+
+### 🌿 Branching
+| Command | Purpose |
+|---|---|
+| `git branch` | List all local branches |
+| `git branch -a` | List all branches (local + remote) |
+| `git branch feature-name` | Create a new branch |
+| `git checkout feature-name` | Switch to a branch |
+| `git checkout -b feature-name` | Create AND switch in one command ← use this |
+| `git branch -d feature-name` | Delete a branch (safe — merged only) |
+| `git branch -D feature-name` | Force delete a branch |
+| `git switch feature-name` | Modern way to switch branches |
+| `git switch -c feature-name` | Modern way to create + switch |
+
+---
+
+### 🔀 Merging & Rebasing
+| Command | Purpose |
+|---|---|
+| `git merge feature-name` | Merge a branch into your current branch |
+| `git merge --abort` | Cancel a merge if conflicts are messy |
+| `git rebase main` | Replay your branch commits on top of main |
+| `git rebase --abort` | Cancel a rebase |
+
+---
+
+### ☁️ Remote (GitHub)
+| Command | Purpose |
+|---|---|
+| `git remote -v` | See your connected remote URLs |
+| `git remote add origin <url>` | Link your local repo to GitHub |
+| `git push origin main` | Upload main branch to GitHub |
+| `git push -u origin main` | Upload + set upstream (do once, then just `git push`) |
+| `git push origin feature-name` | Push a specific branch |
+| `git push --force` | Force push (dangerous — overwrites remote) |
+| `git pull` | Download + merge latest from GitHub |
+| `git pull origin main` | Pull specifically from main |
+| `git fetch` | Download changes but DON'T merge yet |
+
+---
+
+### ↩️ Undoing Mistakes
+| Command | Purpose |
+|---|---|
+| `git restore filename.py` | Discard unsaved changes to a file |
+| `git restore --staged filename.py` | Unstage a file (keep changes) |
+| `git revert <commit-id>` | Undo a commit safely (creates new commit) |
+| `git reset --soft HEAD~1` | Undo last commit, keep changes staged |
+| `git reset --mixed HEAD~1` | Undo last commit, keep changes unstaged |
+| `git reset --hard HEAD~1` | Undo last commit + DELETE all changes ⚠️ |
+| `git clean -fd` | Delete all untracked files & folders ⚠️ |
+
+---
+
+### 📦 Stash (Temporary Save)
+| Command | Purpose |
+|---|---|
+| `git stash` | Temporarily save dirty work (not committed) |
+| `git stash list` | See all stashed saves |
+| `git stash pop` | Bring back your stash + remove it from list |
+| `git stash apply` | Bring back stash but KEEP it in list |
+| `git stash drop` | Delete a stash permanently |
+
+---
+
+### 🏷️ Tags
+| Command | Purpose |
+|---|---|
+| `git tag v1.0` | Mark current commit as v1.0 |
+| `git tag` | List all tags |
+| `git push origin v1.0` | Push a tag to GitHub |
+| `git push origin --tags` | Push all tags to GitHub |
+
+---
+
+## GitHub-Specific Actions (done on the website or via `gh` CLI)
+
+| Action | Purpose |
+|---|---|
+| **Fork** | Copy someone else's repo to your account |
+| **Pull Request (PR)** | Request to merge your branch into main |
+| **Issues** | Report a bug or request a feature |
+| **Star** | Bookmark a useful repo |
+| **Watch** | Get notified of repo activity |
+| **GitHub Actions** | Auto-run tests/deploy on every push (CI/CD) |
+| **Secrets** | Store API keys safely (not in code) |
+| **GitHub Pages** | Publish a website from your repo |
+
+---
+
+## The 6 Commands You'll Use Every Single Day
+
+```bash
+git status           # always start here
+git add .            # stage everything
+git commit -m "..."  # save snapshot
+git push             # upload to GitHub
+git pull             # get latest from GitHub
+git checkout -b ...  # start new branch for new work
+```
+
+---
+
+## Sysadmin Mental Models
+
+| Git Concept | Your Sysadmin Equivalent |
+|---|---|
+| Repository | A project folder with full backup history |
+| Commit | System snapshot / restore point |
+| Branch | Sandbox VM — test without touching production |
+| Merge | Promoting sandbox changes to production |
+| Push / Pull | Syncing to/from a central server |
+| Stash | Pausing a task — save state, switch context |
+| `.gitignore` | Files you'd never back up (logs, temp files) |
+| Revert | Rolling back a bad patch safely |
+| Reset --hard | Wiping a VM to last good snapshot ⚠️ |
+
+---
+
+**Print or bookmark this page.** You won't memorize all of these — nobody does. The goal is knowing they *exist* so you can look them up fast. After 2 weeks of daily commits, `add → commit → push` will be muscle memory. Want me to create practice exercises for each section?
